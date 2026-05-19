@@ -1,7 +1,7 @@
 package com.example.modul3.model;
 
-import lombok.Getter;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @Getter
 @AllArgsConstructor

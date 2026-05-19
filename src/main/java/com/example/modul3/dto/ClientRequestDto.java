@@ -1,19 +1,17 @@
 package com.example.modul3.dto;
 
-import com.example.modul3.model.Role;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class EmployeeRequestDto {
+public class ClientRequestDto {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
-    private Role role;
+    private String phone;
 }
