@@ -25,13 +25,13 @@ public class ProductController {
     private final ProductRepository repository;
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> create(@RequestBody ProductRequestDto dto){
+    public ResponseEntity<ProductResponseDto> create(@RequestBody ProductRequestDto dto) {
         ProductResponseDto result = service.create(dto);
         return ResponseEntity.status(201).body(result);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDto> update(@PathVariable Long id, @RequestBody ProductRequestDto dto){
+    public ResponseEntity<ProductResponseDto> update(@PathVariable Long id, @RequestBody ProductRequestDto dto) {
         ProductResponseDto result = service.update(id, dto);
         return ResponseEntity.ok(result);
     }
@@ -52,13 +52,13 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponseDto> getById(@PathVariable Long id){
+    public ResponseEntity<ProductResponseDto> getById(@PathVariable Long id) {
         ProductResponseDto result = service.getById(id);
         return ResponseEntity.ok(result);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

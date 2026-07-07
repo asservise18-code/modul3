@@ -11,6 +11,7 @@ import org.mapstruct.Mapper;
 public interface ProductMapper {
 
     Product toEntity(ProductRequestDto dto);
+
     ProductResponseDto toResponseDto(Product product);
 
 

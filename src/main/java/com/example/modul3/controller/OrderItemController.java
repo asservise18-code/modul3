@@ -35,7 +35,7 @@ public class OrderItemController {
     }
 
     @GetMapping("/api/orders/{orderId}/items")
-    public ResponseEntity<List<OrderItemResponseDto>> getItemsByOrderId(@PathVariable Long orderId){
+    public ResponseEntity<List<OrderItemResponseDto>> getItemsByOrderId(@PathVariable Long orderId) {
         List<OrderItemResponseDto> result = orderItemService.getItemsByOrderId(orderId);
         return ResponseEntity.ok(result);
     }

@@ -24,7 +24,7 @@ public class ProductService {
     private final ProductMapper productMapper;
     private final OrderItemRepository orderItemRepository;
 
-    public ProductResponseDto create(ProductRequestDto productRequestDto){
+    public ProductResponseDto create(ProductRequestDto productRequestDto) {
         validateProduct(productRequestDto);
 
         if (repository.existsByName(productRequestDto.getName())) {
@@ -78,9 +78,9 @@ public class ProductService {
         return productPage.map(productMapper::toResponseDto);
     }
 
-    public ProductResponseDto getById(Long id){
+    public ProductResponseDto getById(Long id) {
         Product product = repository.findById(id)
-                .orElseThrow(()->new ProductIdException(id));
+                .orElseThrow(() -> new ProductIdException(id));
 
         return productMapper.toResponseDto(product);
     }
@@ -106,10 +106,10 @@ public class ProductService {
     }
 
 
-    public void delete(Long id){
+    public void delete(Long id) {
         Product product = repository.findById(id)
-                .orElseThrow(()->new ProductIdException(id));
-        if(orderItemRepository.existsByProductId(id)){
+                .orElseThrow(() -> new ProductIdException(id));
+        if (orderItemRepository.existsByProductId(id)) {
             throw new ProductInOrdersException(id);
         }
         repository.delete(product);
