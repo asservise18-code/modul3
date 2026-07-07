@@ -16,7 +16,13 @@ public class GlobalExceptionHandler {
             EmployeeIdException.class,
             PasswordException.class,
             ClientIdException.class,
-            OrderIdException.class
+            OrderIdException.class,
+            ProductIdException.class,
+            ProductPriceException.class,
+            ProductIsEmptyNameException.class,
+            ProductNameException.class,
+            OrderItemIdException.class,
+            ProductInOrdersException.class
     })
     public ResponseEntity<ErrorResponse> handleCustomException(RuntimeException ex) {
         return ResponseEntity.status(getStatus(ex))
