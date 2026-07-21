@@ -5,17 +5,9 @@ import com.example.modul3.model.Role;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.Optional;
-
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Long>, JpaSpecificationExecutor<Employee> {
     Optional<Employee> findByEmail(String email);
-
-    Page<Employee> findByRole(Role role, Pageable pageable);
-
-    Page<Employee> findByFirstNameContainingIgnoreCase(String firstName, Pageable pageable);
-
-    Page<Employee> findByRoleAndFirstNameContainingIgnoreCase(Role role, String firstName, Pageable pageable);
-
-
 }

@@ -4,6 +4,7 @@ import com.example.modul3.dto.OrderRequestDto;
 import com.example.modul3.dto.OrderResponseDto;
 import com.example.modul3.model.OrderStatus;
 import com.example.modul3.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,13 @@ public class OrderController {
     private final OrderService service;
 
     @PostMapping
-    public ResponseEntity<OrderResponseDto> create(@RequestBody OrderRequestDto dto) {
+    public ResponseEntity<OrderResponseDto> create(@Valid @RequestBody OrderRequestDto dto) {
         OrderResponseDto result = service.create(dto);
         return ResponseEntity.status(201).body(result);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderResponseDto> update(@PathVariable Long id, @RequestBody OrderRequestDto dto) {
+    public ResponseEntity<OrderResponseDto> update(@PathVariable Long id, @Valid @RequestBody OrderRequestDto dto) {
         OrderResponseDto result = service.update(id, dto);
         return ResponseEntity.ok(result);
     }

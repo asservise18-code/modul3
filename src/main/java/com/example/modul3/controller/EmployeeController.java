@@ -4,6 +4,7 @@ import com.example.modul3.dto.EmployeeRequestDto;
 import com.example.modul3.dto.EmployeeResponseDto;
 import com.example.modul3.model.Role;
 import com.example.modul3.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class EmployeeController {
     private final EmployeeService service;
 
     @PostMapping
-    public ResponseEntity<EmployeeResponseDto> create(@RequestBody EmployeeRequestDto dto) {
+    public ResponseEntity<EmployeeResponseDto> create(@Valid @RequestBody EmployeeRequestDto dto) {
         EmployeeResponseDto result = service.create(dto);
         return ResponseEntity.status(201).body(result);
     }
@@ -26,7 +27,7 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public ResponseEntity<EmployeeResponseDto> update(
             @PathVariable Long id,
-            @RequestBody EmployeeRequestDto dto) {
+            @Valid @RequestBody EmployeeRequestDto dto) {
         EmployeeResponseDto result = service.update(id, dto);
         return ResponseEntity.ok(result);
     }

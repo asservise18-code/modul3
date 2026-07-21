@@ -6,6 +6,7 @@ import com.example.modul3.mapper.ProductMapper;
 import com.example.modul3.model.Product;
 import com.example.modul3.repository.ProductRepository;
 import com.example.modul3.service.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,13 +26,13 @@ public class ProductController {
     private final ProductRepository repository;
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> create(@RequestBody ProductRequestDto dto) {
+    public ResponseEntity<ProductResponseDto> create(@Valid @RequestBody ProductRequestDto dto) {
         ProductResponseDto result = service.create(dto);
         return ResponseEntity.status(201).body(result);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponseDto> update(@PathVariable Long id, @RequestBody ProductRequestDto dto) {
+    public ResponseEntity<ProductResponseDto> update(@PathVariable Long id, @Valid @RequestBody ProductRequestDto dto) {
         ProductResponseDto result = service.update(id, dto);
         return ResponseEntity.ok(result);
     }

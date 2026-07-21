@@ -22,7 +22,8 @@ public class GlobalExceptionHandler {
             ProductIsEmptyNameException.class,
             ProductNameException.class,
             OrderItemIdException.class,
-            ProductInOrdersException.class
+            ProductInOrdersException.class,
+            InvalidQuantityException.class
     })
     public ResponseEntity<ErrorResponse> handleCustomException(RuntimeException ex) {
         return ResponseEntity.status(getStatus(ex))

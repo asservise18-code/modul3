@@ -7,11 +7,13 @@ import com.example.modul3.mapper.ProductMapper;
 import com.example.modul3.model.Product;
 import com.example.modul3.repository.OrderItemRepository;
 import com.example.modul3.repository.ProductRepository;
+import com.example.modul3.specification.ProductSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -21,7 +23,7 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository repository;
-    private final ProductMapper productMapper;
+    private final ProductMapper mapper;
     private final OrderItemRepository orderItemRepository;
 
     public ProductResponseDto create(ProductRequestDto productRequestDto) {
@@ -31,10 +33,10 @@ public class ProductService {
             throw new ProductNameException(productRequestDto.getName());
         }
 
-        Product product = productMapper.toEntity(productRequestDto);
+        Product product = mapper.toEntity(productRequestDto);
         Product savedProduct = repository.save(product);
 
-        return productMapper.toResponseDto(savedProduct);
+        return mapper.toResponseDto(savedProduct);
 
     }
 
@@ -58,31 +60,35 @@ public class ProductService {
             BigDecimal minPrice,
             BigDecimal maxPrice
     ) {
-        Sort sort = direction.equalsIgnoreCase("desc")
+        Sort sort = (direction != null && direction.equalsIgnoreCase("desc"))
                 ? Sort.by(sortBy).descending()
                 : Sort.by(sortBy).ascending();
 
         Pageable pageable = PageRequest.of(page, size, sort);
 
-        String filterName = (name == null) ? "" : name;
-        BigDecimal filterMinPrice = (minPrice == null) ? BigDecimal.ZERO : minPrice;
-        BigDecimal filterMaxPrice = (maxPrice == null) ? BigDecimal.valueOf(Double.MAX_VALUE) : maxPrice;
+        Specification<Product> spec = Specification.unrestricted();
 
-        Page<Product> productPage = repository.findByNameContainingIgnoreCaseAndPriceBetween(
-                filterName,
-                filterMinPrice,
-                filterMaxPrice,
-                pageable
-        );
+        if (name != null && !name.isBlank()) {
+            spec = spec.and(ProductSpecification.nameContains(name));
+        }
 
-        return productPage.map(productMapper::toResponseDto);
+        if (minPrice != null) {
+            spec = spec.and(ProductSpecification.priceGreaterThanOrEqualTo(minPrice));
+        }
+
+        if (maxPrice != null) {
+            spec = spec.and(ProductSpecification.priceLessThanOrEqualTo(maxPrice));
+        }
+
+        return repository.findAll(spec, pageable)
+                .map(mapper::toResponseDto);
     }
 
     public ProductResponseDto getById(Long id) {
         Product product = repository.findById(id)
                 .orElseThrow(() -> new ProductIdException(id));
 
-        return productMapper.toResponseDto(product);
+        return mapper.toResponseDto(product);
     }
 
     public ProductResponseDto update(Long id, ProductRequestDto productRequestDto) {
@@ -102,7 +108,7 @@ public class ProductService {
 
         Product updatedProduct = repository.save(product);
 
-        return productMapper.toResponseDto(updatedProduct);
+        return mapper.toResponseDto(updatedProduct);
     }
 
 

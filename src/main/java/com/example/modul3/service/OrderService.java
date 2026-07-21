@@ -10,11 +10,13 @@ import com.example.modul3.model.Order;
 import com.example.modul3.model.OrderStatus;
 import com.example.modul3.repository.ClientRepository;
 import com.example.modul3.repository.OrderRepository;
+import com.example.modul3.specification.OrderSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,7 +72,6 @@ public class OrderService {
                 .orElseThrow(() -> new OrderIdException(id));
         return mapper.toDto(order);
     }
-
     @Transactional(readOnly = true)
     public Page<OrderResponseDto> getAll(
             int page,
@@ -79,23 +80,28 @@ public class OrderService {
             OrderStatus status,
             String createdAt
     ) {
-        Sort sort = direction.equalsIgnoreCase("asc")
+        Sort sort = (direction != null && direction.equalsIgnoreCase("asc"))
                 ? Sort.by("createdAt").ascending()
                 : Sort.by("createdAt").descending();
 
         Pageable pageable = PageRequest.of(page, size, sort);
-        Page<Order> orderPage;
+
+        Specification<Order> spec = Specification.unrestricted();
 
         if (status != null) {
-            orderPage = repository.findByStatus(status, pageable);
-        } else if (createdAt != null && !createdAt.isBlank()) {
+            spec = spec.and(OrderSpecification.hasStatus(status));
+        }
+
+        if (createdAt != null && !createdAt.isBlank()) {
             LocalDate date = LocalDate.parse(createdAt);
             LocalDateTime start = date.atStartOfDay();
             LocalDateTime end = date.atTime(LocalTime.MAX);
-            orderPage = repository.findByCreatedAtBetween(start, end, pageable);
-        } else orderPage = repository.findAll(pageable);
-        return orderPage.map(mapper::toDto);
-    }
 
+            spec = spec.and(OrderSpecification.createdAtBetween(start, end));
+        }
+
+        return repository.findAll(spec, pageable)
+                .map(mapper::toDto);
+    }
 
 }

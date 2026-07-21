@@ -9,11 +9,13 @@ import com.example.modul3.model.Client;
 import com.example.modul3.model.Order;
 import com.example.modul3.repository.ClientRepository;
 import com.example.modul3.repository.OrderRepository;
+import com.example.modul3.specification.ClientSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -92,24 +94,31 @@ public class ClientService {
             String email,
             String phone
     ) {
-        Sort sort = direction.equalsIgnoreCase("desc") ?
+        Sort sort = (direction != null && direction.equalsIgnoreCase("desc"))?
                 Sort.by("firstName").descending() :
                 Sort.by("firstName").ascending();
 
         Pageable pageable = PageRequest.of(page, size, sort);
-        Page<Client> clientPage;
 
+        Specification<Client> spec = Specification.unrestricted();
         if (firstName != null && !firstName.isBlank()) {
-            clientPage = repository.findByFirstNameContainingIgnoreCase(firstName, pageable);
-        } else if (lastName != null && !lastName.isBlank()) {
-            clientPage = repository.findByLastNameContainingIgnoreCase(lastName, pageable);
-        } else if (email != null && !email.isBlank()) {
-            clientPage = repository.findByEmailContainingIgnoreCase(email, pageable);
-        } else if (phone != null && !phone.isBlank()) {
-            clientPage = repository.findByPhoneContainingIgnoreCase(phone, pageable);
-        } else clientPage = repository.findAll(pageable);
+            spec = spec.and(ClientSpecification.firstNameContains(firstName));
+        }
 
-        return clientPage.map(mapper::toListDto);
+        if (lastName != null && !lastName.isBlank()) {
+            spec = spec.and(ClientSpecification.lastNameContains(lastName));
+        }
+
+        if (email != null && !email.isBlank()) {
+            spec = spec.and(ClientSpecification.emailContains(email));
+        }
+
+        if (phone != null && !phone.isBlank()) {
+            spec = spec.and(ClientSpecification.phoneContains(phone));
+        }
+
+        return repository.findAll(spec, pageable)
+                .map(mapper::toListDto);
     }
 
 }

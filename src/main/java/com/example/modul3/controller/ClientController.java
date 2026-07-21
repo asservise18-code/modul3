@@ -3,6 +3,7 @@ package com.example.modul3.controller;
 import com.example.modul3.dto.ClientRequestDto;
 import com.example.modul3.dto.ClientResponseDto;
 import com.example.modul3.service.ClientService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public class ClientController {
     private final ClientService service;
 
     @PostMapping
-    public ResponseEntity<ClientResponseDto> create(@RequestBody ClientRequestDto dto) {
+    public ResponseEntity<ClientResponseDto> create(@Valid @RequestBody ClientRequestDto dto) {
         ClientResponseDto result = service.create(dto);
         return ResponseEntity.status(201).body(result);
     }
@@ -23,7 +24,7 @@ public class ClientController {
     @PutMapping("/{id}")
     public ResponseEntity<ClientResponseDto> update(
             @PathVariable Long id,
-            @RequestBody ClientRequestDto dto) {
+            @Valid @RequestBody ClientRequestDto dto) {
         ClientResponseDto result = service.update(id, dto);
         return ResponseEntity.ok(result);
     }
@@ -47,7 +48,8 @@ public class ClientController {
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) String email,
-            @RequestParam(required = false) String phone) {
+            @RequestParam(required = false) String phone
+    ) {
         Page<ClientResponseDto> result = service.getAll(page, size, direction, firstName, lastName, email, phone);
         return ResponseEntity.ok(result);
     }

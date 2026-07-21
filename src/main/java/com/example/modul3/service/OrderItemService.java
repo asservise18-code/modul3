@@ -3,9 +3,11 @@ package com.example.modul3.service;
 import com.example.modul3.dto.AddProductToOrderRequestDto;
 import com.example.modul3.dto.OrderItemResponseDto;
 import com.example.modul3.dto.UpdateOrderItemQuantityRequestDto;
+import com.example.modul3.exception.InvalidQuantityException;
 import com.example.modul3.exception.OrderIdException;
 import com.example.modul3.exception.OrderItemIdException;
 import com.example.modul3.exception.ProductIdException;
+import com.example.modul3.mapper.OrderItemMapper;
 import com.example.modul3.model.Order;
 import com.example.modul3.model.OrderItem;
 import com.example.modul3.model.Product;
@@ -24,9 +26,13 @@ public class OrderItemService {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final OrderItemRepository orderItemRepository;
+    private final OrderItemMapper orderItemMapper;
 
     @Transactional
     public OrderItemResponseDto addProductToOrder(Long orderId, AddProductToOrderRequestDto dto) {
+        if (dto == null || dto.getQuantity() == null || dto.getQuantity() < 1) {
+            throw new InvalidQuantityException();
+        }
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new OrderIdException(orderId));
 
@@ -46,14 +52,7 @@ public class OrderItemService {
                     .build();
         }
         OrderItem saved = orderItemRepository.save(orderItem);
-
-        return new OrderItemResponseDto(
-                saved.getId(),
-                saved.getOrder().getId(),
-                saved.getProduct().getId(),
-                saved.getProduct().getName(),
-                saved.getQuantity()
-        );
+        return orderItemMapper.toDto(saved);
     }
 
     @Transactional
@@ -64,13 +63,7 @@ public class OrderItemService {
 
         OrderItem updated = orderItemRepository.save(orderItem);
 
-        return new OrderItemResponseDto(
-                updated.getId(),
-                updated.getOrder().getId(),
-                updated.getProduct().getId(),
-                updated.getProduct().getName(),
-                updated.getQuantity()
-        );
+        return orderItemMapper.toDto(updated);
     }
 
     @Transactional
@@ -86,13 +79,7 @@ public class OrderItemService {
                 .orElseThrow(() -> new OrderIdException(orderId));
         List<OrderItem> orderItems = orderItemRepository.findByOrderId(order.getId());
 
-        return orderItems.stream()
-                .map(orderItem -> new OrderItemResponseDto(orderItem.getId(),
-                        orderItem.getOrder().getId(),
-                        orderItem.getProduct().getId(),
-                        orderItem.getProduct().getName(),
-                        orderItem.getQuantity()
-                )).toList();
+        return orderItemMapper.toDtoList(orderItems);
     }
 
 }
