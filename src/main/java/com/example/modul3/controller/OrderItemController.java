@@ -18,13 +18,13 @@ public class OrderItemController {
     private final OrderItemService orderItemService;
 
     @PostMapping("/api/orders/{orderId}/items")
-    public ResponseEntity<OrderItemResponseDto> addProductToOrder(@PathVariable Long orderId,@Valid @RequestBody AddProductToOrderRequestDto dto) {
+    public ResponseEntity<OrderItemResponseDto> addProductToOrder(@PathVariable Long orderId, @Valid @RequestBody AddProductToOrderRequestDto dto) {
         OrderItemResponseDto result = orderItemService.addProductToOrder(orderId, dto);
         return ResponseEntity.status(201).body(result);
     }
 
     @PutMapping("/api/order-items/{id}")
-    public ResponseEntity<OrderItemResponseDto> updateQuantity(@PathVariable Long id,@Valid @RequestBody UpdateOrderItemQuantityRequestDto dto) {
+    public ResponseEntity<OrderItemResponseDto> updateQuantity(@PathVariable Long id, @Valid @RequestBody UpdateOrderItemQuantityRequestDto dto) {
         OrderItemResponseDto result = orderItemService.updateQuantity(id, dto);
         return ResponseEntity.ok(result);
     }

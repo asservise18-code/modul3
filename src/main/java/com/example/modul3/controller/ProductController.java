@@ -2,21 +2,15 @@ package com.example.modul3.controller;
 
 import com.example.modul3.dto.ProductRequestDto;
 import com.example.modul3.dto.ProductResponseDto;
-import com.example.modul3.mapper.ProductMapper;
-import com.example.modul3.model.Product;
 import com.example.modul3.repository.ProductRepository;
 import com.example.modul3.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")

@@ -87,6 +87,7 @@ public class EmployeeService {
         return repository.findAll(spec, pageable)
                 .map(mapper::toResponseDto);
     }
+
     public EmployeeResponseDto getById(Long id) {
         Employee employee = repository.findById(id)
                 .orElseThrow(() -> new EmployeeIdException(id));

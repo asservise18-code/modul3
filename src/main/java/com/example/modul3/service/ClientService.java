@@ -94,7 +94,7 @@ public class ClientService {
             String email,
             String phone
     ) {
-        Sort sort = (direction != null && direction.equalsIgnoreCase("desc"))?
+        Sort sort = (direction != null && direction.equalsIgnoreCase("desc")) ?
                 Sort.by("firstName").descending() :
                 Sort.by("firstName").ascending();
 

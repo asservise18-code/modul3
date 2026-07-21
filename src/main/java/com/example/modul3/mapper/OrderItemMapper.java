@@ -15,6 +15,7 @@ public interface OrderItemMapper {
     @Mapping(target = "productId", source = "product.id")
     @Mapping(target = "productName", source = "product.name")
     OrderItemResponseDto toDto(OrderItem orderItem);
+
     List<OrderItemResponseDto> toDtoList(List<OrderItem> orderItems);
 }
 

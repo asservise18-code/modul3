@@ -72,6 +72,7 @@ public class OrderService {
                 .orElseThrow(() -> new OrderIdException(id));
         return mapper.toDto(order);
     }
+
     @Transactional(readOnly = true)
     public Page<OrderResponseDto> getAll(
             int page,
