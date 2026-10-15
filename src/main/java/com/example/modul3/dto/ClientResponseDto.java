@@ -1,15 +1,10 @@
 package com.example.modul3.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 
 import java.util.List;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Ответ с данными клиента")
 @Getter

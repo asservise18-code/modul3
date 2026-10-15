@@ -1,9 +1,8 @@
 package com.example.modul3.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Ответ с JWT-токеном после успешной аутентификации")
 @Getter

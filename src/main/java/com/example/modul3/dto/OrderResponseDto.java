@@ -2,15 +2,10 @@ package com.example.modul3.dto;
 
 import com.example.modul3.model.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 
 import java.time.LocalDateTime;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Ответ с данными заказа")
 @Getter

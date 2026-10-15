@@ -2,21 +2,20 @@ package com.example.modul3.controller;
 
 import com.example.modul3.dto.EmployeeRequestDto;
 import com.example.modul3.dto.EmployeeResponseDto;
-import com.example.modul3.model.Role;
-import com.example.modul3.service.EmployeeService;
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import com.example.modul3.dto.LoginRequestDto;
 import com.example.modul3.dto.LoginResponseDto;
-
+import com.example.modul3.model.Role;
+import com.example.modul3.service.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 
 @Tag(

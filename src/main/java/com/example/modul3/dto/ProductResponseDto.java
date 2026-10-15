@@ -1,13 +1,12 @@
 package com.example.modul3.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Ответ с данными товара")
 @Getter

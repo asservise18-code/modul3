@@ -3,3 +3,159 @@
 2026-10-16T00:16:33.042+04:00  INFO 12312 --- [modul3] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-10-16T00:16:33.058+04:00  INFO 12312 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-10-16T00:16:33.065+04:00  INFO 12312 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-16T00:25:23.071+04:00  INFO 11592 --- [modul3] [main] com.example.modul3.Modul3Application     : Starting Modul3Application using Java 25.0.1 with PID 11592 (C:\Users\valera\Downloads\modul3-main (3)\modul3-main\target\classes started by valera in C:\Users\valera\Downloads\modul3-main (3)\modul3-main)
+2026-10-16T00:25:23.077+04:00  INFO 11592 --- [modul3] [main] com.example.modul3.Modul3Application     : No active profile set, falling back to 1 default profile: "default"
+2026-10-16T00:25:25.269+04:00  INFO 11592 --- [modul3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-16T00:25:25.356+04:00  INFO 11592 --- [modul3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 5 JPA repository interfaces.
+2026-10-16T00:25:26.150+04:00  INFO 11592 --- [modul3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-16T00:25:26.175+04:00  INFO 11592 --- [modul3] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-16T00:25:26.175+04:00  INFO 11592 --- [modul3] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-16T00:25:26.245+04:00  INFO 11592 --- [modul3] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3069 ms
+2026-10-16T00:25:26.692+04:00  INFO 11592 --- [modul3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-16T00:25:27.005+04:00  INFO 11592 --- [modul3] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@645ba24a
+2026-10-16T00:25:27.008+04:00  INFO 11592 --- [modul3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-16T00:25:27.059+04:00  INFO 11592 --- [modul3] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/modul3_db (PostgreSQL 18.3)
+2026-10-16T00:25:27.191+04:00  INFO 11592 --- [modul3] [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.064s)
+2026-10-16T00:25:27.212+04:00  INFO 11592 --- [modul3] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2026-10-16T00:25:27.219+04:00  INFO 11592 --- [modul3] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-16T00:25:28.105+04:00  INFO 11592 --- [modul3] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-16T00:25:29.954+04:00  INFO 11592 --- [modul3] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-16T00:25:30.073+04:00  INFO 11592 --- [modul3] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-16T00:25:31.734+04:00  INFO 11592 --- [modul3] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-16T00:25:31.845+04:00  INFO 11592 --- [modul3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-16T00:25:31.856+04:00  INFO 11592 --- [modul3] [main] com.example.modul3.Modul3Application     : Started Modul3Application in 9.409 seconds (process running for 11.542)
+2026-10-16T00:25:31.866+04:00  WARN 11592 --- [modul3] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-16T00:25:31.866+04:00  WARN 11592 --- [modul3] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-10-16T00:25:38.595+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-16T00:25:38.596+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-16T00:25:38.598+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-10-16T00:25:39.640+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 583 ms
+2026-10-16T00:27:13.878+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-7] c.e.modul3.service.EmployeeService       : Создание сотрудника с email=john.doe@example.com
+2026-10-16T00:27:15.079+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-7] c.e.modul3.service.EmployeeService       : Сотрудник успешно создан, id=11, email=john.doe@example.com
+2026-10-16T00:27:51.304+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-9] c.e.modul3.service.EmployeeService       : Попытка входа для email=john.doe@example.com
+2026-10-16T00:27:51.419+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-9] c.e.modul3.service.EmployeeService       : Сотрудник успешно вошёл в систему, email=john.doe@example.com
+2026-10-16T00:28:18.418+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-10] c.example.modul3.service.OrderService    : Получение заказа по id=1
+2026-10-16T00:28:18.448+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-10] c.example.modul3.service.OrderService    : Заказ найден, id=1, id клиента=1, статус=NEW
+2026-10-16T00:29:39.942+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-2] c.example.modul3.service.OrderService    : Получение заказов: страница=0, размер=10, направление=asc, статус=null, дата создания=null
+2026-10-16T00:29:39.983+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-2] c.example.modul3.service.OrderService    : Найдено 1 заказов на странице 0
+2026-10-16T00:29:39.987+04:00  WARN 11592 --- [modul3] [http-nio-8080-exec-2] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-10-16T00:30:23.899+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-5] c.e.modul3.service.EmployeeService       : Получение сотрудников: страница=0, размер=10, сортировка=id, направление=asc, роль=null, имя=null
+2026-10-16T00:30:23.924+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-5] c.e.modul3.service.EmployeeService       : Найдено 10 сотрудников на странице 0
+2026-10-16T00:32:29.158+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-7] c.example.modul3.service.ClientService   : Получение клиентов: страница=0, размер=10, направление=asc, имя=null, фамилия=null, email=null, телефон=null
+2026-10-16T00:32:29.164+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-7] c.example.modul3.service.ClientService   : Найдено 1 клиентов на странице 0
+2026-10-16T00:34:21.444+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-10] c.e.modul3.service.EmployeeService       : Попытка входа для email=john.doe@example.com
+2026-10-16T00:34:21.550+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-10] c.e.modul3.service.EmployeeService       : Сотрудник успешно вошёл в систему, email=john.doe@example.com
+2026-10-16T00:37:30.829+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-8] c.example.modul3.service.ClientService   : Получение клиента по id=1
+2026-10-16T00:37:30.836+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-8] c.example.modul3.service.ClientService   : Клиент найден, id=1, email=anna.test@example.com
+2026-10-16T00:38:53.226+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-10] c.example.modul3.service.ProductService  : Получение товаров: страница=0, размер=10, сортировка=name, направление=asc, название=null, минимальная цена=null, максимальная цена=null
+2026-10-16T00:38:53.243+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-10] c.example.modul3.service.ProductService  : Найдено 1 товаров на странице 0
+2026-10-16T00:44:11.356+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-1] c.e.modul3.service.EmployeeService       : Создание сотрудника с email=john456.doe@example.com
+2026-10-16T00:44:11.544+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-1] c.e.modul3.service.EmployeeService       : Сотрудник успешно создан, id=12, email=john456.doe@example.com
+2026-10-16T00:45:02.451+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-4] c.e.modul3.service.EmployeeService       : Попытка входа для email=john456.doe@example.com
+2026-10-16T00:45:02.614+04:00  INFO 11592 --- [modul3] [http-nio-8080-exec-4] c.e.modul3.service.EmployeeService       : Сотрудник успешно вошёл в систему, email=john456.doe@example.com
+2026-10-16T00:46:31.102+04:00  INFO 11592 --- [modul3] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-16T00:46:31.111+04:00  INFO 11592 --- [modul3] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-16T00:46:31.123+04:00  INFO 11592 --- [modul3] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-16T00:46:31.127+04:00  INFO 11592 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-16T00:46:31.130+04:00  INFO 11592 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-16T00:46:38.331+04:00  INFO 2036 --- [modul3] [main] com.example.modul3.Modul3Application     : Starting Modul3Application using Java 25.0.1 with PID 2036 (C:\Users\valera\Downloads\modul3-main (3)\modul3-main\target\classes started by valera in C:\Users\valera\Downloads\modul3-main (3)\modul3-main)
+2026-10-16T00:46:38.335+04:00  INFO 2036 --- [modul3] [main] com.example.modul3.Modul3Application     : No active profile set, falling back to 1 default profile: "default"
+2026-10-16T00:46:39.281+04:00  WARN 2036 --- [modul3] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jwtDecoder' defined in class path resource [com/example/modul3/config/SecurityConfig.class]: Cannot register bean definition [Root bean: class=null; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; fallback=false; factoryBeanName=securityConfig; factoryMethodName=jwtDecoder; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [com/example/modul3/config/SecurityConfig.class]] for bean 'jwtDecoder' since there is already [Root bean: class=null; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; fallback=false; factoryBeanName=jwtConfig; factoryMethodName=jwtDecoder; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [com/example/modul3/config/JwtConfig.class]] bound.
+2026-10-16T00:46:39.287+04:00  INFO 2036 --- [modul3] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-10-16T00:46:39.304+04:00 ERROR 2036 --- [modul3] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jwtDecoder', defined in class path resource [com/example/modul3/config/SecurityConfig.class], could not be registered. A bean with that name has already been defined in class path resource [com/example/modul3/config/JwtConfig.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2026-10-16T00:49:55.940+04:00  INFO 17376 --- [modul3] [main] com.example.modul3.Modul3Application     : Starting Modul3Application using Java 25.0.1 with PID 17376 (C:\Users\valera\Downloads\modul3-main (3)\modul3-main\target\classes started by valera in C:\Users\valera\Downloads\modul3-main (3)\modul3-main)
+2026-10-16T00:49:55.943+04:00  INFO 17376 --- [modul3] [main] com.example.modul3.Modul3Application     : No active profile set, falling back to 1 default profile: "default"
+2026-10-16T00:49:57.160+04:00  INFO 17376 --- [modul3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-16T00:49:57.237+04:00  INFO 17376 --- [modul3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 5 JPA repository interfaces.
+2026-10-16T00:49:58.026+04:00  INFO 17376 --- [modul3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-16T00:49:58.047+04:00  INFO 17376 --- [modul3] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-16T00:49:58.047+04:00  INFO 17376 --- [modul3] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-16T00:49:58.121+04:00  INFO 17376 --- [modul3] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2124 ms
+2026-10-16T00:49:58.497+04:00  INFO 17376 --- [modul3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-16T00:49:58.681+04:00  INFO 17376 --- [modul3] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1760e594
+2026-10-16T00:49:58.682+04:00  INFO 17376 --- [modul3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-16T00:49:58.713+04:00  INFO 17376 --- [modul3] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/modul3_db (PostgreSQL 18.3)
+2026-10-16T00:49:58.780+04:00  INFO 17376 --- [modul3] [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.032s)
+2026-10-16T00:49:58.850+04:00  INFO 17376 --- [modul3] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2026-10-16T00:49:58.856+04:00  INFO 17376 --- [modul3] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-16T00:49:59.573+04:00  INFO 17376 --- [modul3] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-16T00:50:00.923+04:00  INFO 17376 --- [modul3] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-16T00:50:01.005+04:00  INFO 17376 --- [modul3] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-16T00:50:02.228+04:00  INFO 17376 --- [modul3] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-16T00:50:02.301+04:00  INFO 17376 --- [modul3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-16T00:50:02.311+04:00  INFO 17376 --- [modul3] [main] com.example.modul3.Modul3Application     : Started Modul3Application in 6.867 seconds (process running for 7.714)
+2026-10-16T00:50:02.318+04:00  WARN 17376 --- [modul3] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-16T00:50:02.318+04:00  WARN 17376 --- [modul3] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-10-16T00:50:02.600+04:00  INFO 17376 --- [modul3] [RMI TCP Connection(4)-192.168.1.102] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-16T00:50:02.601+04:00  INFO 17376 --- [modul3] [RMI TCP Connection(4)-192.168.1.102] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-16T00:50:02.604+04:00  INFO 17376 --- [modul3] [RMI TCP Connection(4)-192.168.1.102] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-16T00:50:15.514+04:00  INFO 17376 --- [modul3] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 669 ms
+2026-10-16T00:50:55.918+04:00  INFO 17376 --- [modul3] [http-nio-8080-exec-10] c.e.modul3.service.EmployeeService       : Создание сотрудника с email=john65.doe@example.com
+2026-10-16T00:50:57.012+04:00  INFO 17376 --- [modul3] [http-nio-8080-exec-10] c.e.modul3.service.EmployeeService       : Сотрудник успешно создан, id=13, email=john65.doe@example.com
+2026-10-16T00:51:35.833+04:00  INFO 17376 --- [modul3] [http-nio-8080-exec-7] c.e.modul3.service.EmployeeService       : Попытка входа для email=john65.doe@example.com
+2026-10-16T00:51:35.972+04:00  INFO 17376 --- [modul3] [http-nio-8080-exec-7] c.e.modul3.service.EmployeeService       : Сотрудник успешно вошёл в систему, email=john65.doe@example.com
+2026-10-16T00:58:12.267+04:00  INFO 17376 --- [modul3] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-16T00:58:12.276+04:00  INFO 17376 --- [modul3] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-16T00:58:12.287+04:00  INFO 17376 --- [modul3] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-16T00:58:12.290+04:00  INFO 17376 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-16T00:58:12.296+04:00  INFO 17376 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-16T00:58:17.402+04:00  INFO 12740 --- [modul3] [main] com.example.modul3.Modul3Application     : Starting Modul3Application using Java 25.0.1 with PID 12740 (C:\Users\valera\Downloads\modul3-main (3)\modul3-main\target\classes started by valera in C:\Users\valera\Downloads\modul3-main (3)\modul3-main)
+2026-10-16T00:58:17.406+04:00  INFO 12740 --- [modul3] [main] com.example.modul3.Modul3Application     : No active profile set, falling back to 1 default profile: "default"
+2026-10-16T00:58:18.547+04:00  INFO 12740 --- [modul3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-16T00:58:18.616+04:00  INFO 12740 --- [modul3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 5 JPA repository interfaces.
+2026-10-16T00:58:19.251+04:00  INFO 12740 --- [modul3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-16T00:58:19.263+04:00  INFO 12740 --- [modul3] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-16T00:58:19.264+04:00  INFO 12740 --- [modul3] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-16T00:58:19.321+04:00  INFO 12740 --- [modul3] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1857 ms
+2026-10-16T00:58:19.697+04:00  INFO 12740 --- [modul3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-16T00:58:19.854+04:00  INFO 12740 --- [modul3] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3f6f9cef
+2026-10-16T00:58:19.855+04:00  INFO 12740 --- [modul3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-16T00:58:19.889+04:00  INFO 12740 --- [modul3] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/modul3_db (PostgreSQL 18.3)
+2026-10-16T00:58:19.965+04:00  INFO 12740 --- [modul3] [main] o.f.core.internal.command.DbValidate     : Successfully validated 5 migrations (execution time 00:00.039s)
+2026-10-16T00:58:20.151+04:00  INFO 12740 --- [modul3] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 5
+2026-10-16T00:58:20.154+04:00  INFO 12740 --- [modul3] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-10-16T00:58:20.773+04:00  INFO 12740 --- [modul3] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-16T00:58:21.886+04:00  INFO 12740 --- [modul3] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-16T00:58:21.976+04:00  INFO 12740 --- [modul3] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-16T00:58:23.252+04:00  INFO 12740 --- [modul3] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-16T00:58:23.330+04:00  INFO 12740 --- [modul3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-16T00:58:23.340+04:00  INFO 12740 --- [modul3] [main] com.example.modul3.Modul3Application     : Started Modul3Application in 6.441 seconds (process running for 7.22)
+2026-10-16T00:58:23.346+04:00  WARN 12740 --- [modul3] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-16T00:58:23.347+04:00  WARN 12740 --- [modul3] [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-10-16T00:58:23.580+04:00  INFO 12740 --- [modul3] [RMI TCP Connection(2)-192.168.1.102] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-16T00:58:23.580+04:00  INFO 12740 --- [modul3] [RMI TCP Connection(2)-192.168.1.102] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-16T00:58:23.583+04:00  INFO 12740 --- [modul3] [RMI TCP Connection(2)-192.168.1.102] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-16T00:58:47.763+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-10] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 875 ms
+2026-10-16T00:59:09.688+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-5] c.e.modul3.service.EmployeeService       : Попытка входа для email=john65.doe@example.com
+2026-10-16T00:59:10.399+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-5] c.e.modul3.service.EmployeeService       : Сотрудник успешно вошёл в систему, email=john65.doe@example.com
+2026-10-16T00:59:44.945+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-1] c.example.modul3.service.ClientService   : Создание клиента с email=aliceф.smith@example.com
+2026-10-16T00:59:45.020+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-1] c.example.modul3.service.ClientService   : Клиент успешно создан, id=2, email=aliceф.smith@example.com
+2026-10-16T00:59:57.878+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-6] c.example.modul3.service.ClientService   : Создание клиента с email=aliceффф.smith@example.com
+2026-10-16T00:59:57.883+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-6] c.example.modul3.service.ClientService   : Клиент успешно создан, id=3, email=aliceффф.smith@example.com
+2026-10-16T01:00:15.997+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-8] c.example.modul3.service.OrderService    : Создание заказа для клиента с id=2
+2026-10-16T01:00:16.061+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-8] c.example.modul3.service.OrderService    : Заказ успешно создан, id=2, id клиента=2, статус=NEW, дата создания=2026-10-16T01:00:16.029547100
+2026-10-16T01:01:49.460+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-8] c.e.modul3.service.EmployeeService       : Создание сотрудника с email=john.dцуцуцуoe@example.com
+2026-10-16T01:01:49.613+04:00  INFO 12740 --- [modul3] [http-nio-8080-exec-8] c.e.modul3.service.EmployeeService       : Сотрудник успешно создан, id=14, email=john.dцуцуцуoe@example.com
+2026-10-16T01:03:15.909+04:00  INFO 12740 --- [modul3] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-16T01:03:15.918+04:00  INFO 12740 --- [modul3] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-16T01:03:15.930+04:00  INFO 12740 --- [modul3] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-16T01:03:15.935+04:00  INFO 12740 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-16T01:03:15.941+04:00  INFO 12740 --- [modul3] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

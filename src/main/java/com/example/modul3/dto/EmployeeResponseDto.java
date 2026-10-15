@@ -1,12 +1,11 @@
 package com.example.modul3.dto;
 
 import com.example.modul3.model.Role;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Ответ с данными сотрудника")
 @Data

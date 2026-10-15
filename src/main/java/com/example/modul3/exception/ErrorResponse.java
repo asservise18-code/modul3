@@ -1,4 +1,5 @@
 package com.example.modul3.exception;
+
 import java.time.Instant;
 
 public record ErrorResponse(
