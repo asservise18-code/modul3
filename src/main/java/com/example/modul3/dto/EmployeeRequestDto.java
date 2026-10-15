@@ -10,26 +10,37 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Запрос на создание или обновление сотрудника")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class EmployeeRequestDto {
 
-    @NotBlank
+    @Schema(description = "Имя сотрудника", example = "John")
+    @NotBlank(message = "Имя не может быть пустым")
     private String firstName;
 
-    @NotBlank
+    @Schema(description = "Фамилия сотрудника", example = "Doe")
+    @NotBlank(message = "Фамилия не может быть пустой")
     private String lastName;
 
-    @NotBlank
-    @Email
+    @Schema(description = "Email сотрудника", example = "john.doe@example.com")
+    @NotBlank(message = "Email не может быть пустым")
+    @Email(message = "Некорректный email")
     private String email;
 
-    @NotBlank
-    @Size(min = 6)
+    @Schema(description = "Пароль сотрудника", example = "Password123")
+    @NotBlank(message = "Пароль не может быть пустым")
+    @Size(min = 6, message = "Пароль должен содержать минимум 6 символов")
     private String password;
 
-    @NotNull
+    @Schema(
+            description = "Роль сотрудника",
+            allowableValues = {"MANAGER", "ADMIN"}
+    )
+    @NotNull(message = "Роль не может быть пустой")
     private Role role;
 }

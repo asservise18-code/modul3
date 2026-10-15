@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: modul3-postgres
+    environment:
+      POSTGRES_DB: modul3_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d modul3_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: modul3-app:latest
+    container_name: modul3-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8080
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: modul3_db
+      DB_USER: postgres
+      DB_PASSWORD: 12345
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in your environment}
+      JWT_ACCESS_TOKEN_EXPIRATION: 15m
+      JWT_ALGORITHM: HS256
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
