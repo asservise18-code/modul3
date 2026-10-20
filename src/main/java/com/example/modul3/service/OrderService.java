@@ -12,8 +12,7 @@ import com.example.modul3.repository.ClientRepository;
 import com.example.modul3.repository.OrderRepository;
 import com.example.modul3.specification.OrderSpecification;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,20 +25,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class OrderService {
-
-    private static final Logger log = LoggerFactory.getLogger(OrderService.class);
 
     private final OrderRepository repository;
     private final OrderMapper mapper;
     private final ClientRepository clientRepository;
 
     public OrderResponseDto create(OrderRequestDto dto) {
-        log.info("Создание заказа для клиента с id={}", dto.getClientId());
-
         Client client = clientRepository.findById(dto.getClientId())
                 .orElseThrow(() -> new ClientIdException(dto.getClientId()));
 
@@ -49,58 +44,40 @@ public class OrderService {
 
         Order saved = repository.save(order);
 
-        log.info("Заказ успешно создан, id={}, id клиента={}, статус={}, дата создания={}",
-                saved.getId(), client.getId(), saved.getStatus(), saved.getCreatedAt());
-
         return mapper.toDto(saved);
     }
 
     public OrderResponseDto update(Long id, OrderRequestDto dto) {
-        log.info("Обновление заказа с id={}, новый id клиента={}, новый статус={}",
-                id, dto.getClientId(), dto.getStatus());
-
         Order existingOrder = repository.findById(id)
                 .orElseThrow(() -> new OrderIdException(id));
 
         Client client = clientRepository.findById(dto.getClientId())
                 .orElseThrow(() -> new ClientIdException(dto.getClientId()));
 
-        log.info("Старый статус заказа={}, новый статус заказа={}",
-                existingOrder.getStatus(), dto.getStatus());
+        if (existingOrder.getStatus() != dto.getStatus()) {
+            log.info("Статус заказа изменён: orderId={}, oldStatus={}, newStatus={}",
+                    id, existingOrder.getStatus(), dto.getStatus());
+        }
 
         existingOrder.setStatus(dto.getStatus());
         existingOrder.setClient(client);
 
         Order updatedOrder = repository.save(existingOrder);
 
-        log.info("Заказ успешно обновлён, id={}, id клиента={}, статус={}",
-                updatedOrder.getId(), client.getId(), updatedOrder.getStatus());
-
         return mapper.toDto(updatedOrder);
     }
 
     public void delete(Long id) {
-        log.info("Удаление заказа с id={}", id);
-
         Order order = repository.findById(id)
                 .orElseThrow(() -> new OrderIdException(id));
 
         repository.delete(order);
-
-        log.info("Заказ успешно удалён, id={}", id);
     }
 
     @Transactional(readOnly = true)
     public OrderResponseDto getById(Long id) {
-        log.info("Получение заказа по id={}", id);
-
         Order order = repository.findById(id)
                 .orElseThrow(() -> new OrderIdException(id));
-
-        log.info("Заказ найден, id={}, id клиента={}, статус={}",
-                order.getId(),
-                order.getClient() != null ? order.getClient().getId() : null,
-                order.getStatus());
 
         return mapper.toDto(order);
     }
@@ -113,9 +90,6 @@ public class OrderService {
             OrderStatus status,
             String createdAt
     ) {
-        log.info("Получение заказов: страница={}, размер={}, направление={}, статус={}, дата создания={}",
-                page, size, direction, status, createdAt);
-
         Sort sort = (direction != null && direction.equalsIgnoreCase("asc"))
                 ? Sort.by("createdAt").ascending()
                 : Sort.by("createdAt").descending();
@@ -136,10 +110,7 @@ public class OrderService {
             spec = spec.and(OrderSpecification.createdAtBetween(start, end));
         }
 
-        Page<OrderResponseDto> result = repository.findAll(spec, pageable)
+        return repository.findAll(spec, pageable)
                 .map(mapper::toDto);
-
-        log.info("Найдено {} заказов на странице {}", result.getNumberOfElements(), page);
-        return result;
     }
 }

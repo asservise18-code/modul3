@@ -9,8 +9,7 @@ import com.example.modul3.repository.OrderItemRepository;
 import com.example.modul3.repository.ProductRepository;
 import com.example.modul3.specification.ProductSpecification;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,21 +19,16 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ProductService {
-
-    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
     private final ProductRepository repository;
     private final ProductMapper mapper;
     private final OrderItemRepository orderItemRepository;
 
     public ProductResponseDto create(ProductRequestDto productRequestDto) {
-        log.info("Создание товара с названием={}, ценой={}",
-                productRequestDto.getName(), productRequestDto.getPrice());
-
         validateProduct(productRequestDto);
 
         if (repository.existsByName(productRequestDto.getName())) {
@@ -44,9 +38,6 @@ public class ProductService {
 
         Product product = mapper.toEntity(productRequestDto);
         Product savedProduct = repository.save(product);
-
-        log.info("Товар успешно создан, id={}, название={}, цена={}",
-                savedProduct.getId(), savedProduct.getName(), savedProduct.getPrice());
 
         return mapper.toResponseDto(savedProduct);
     }
@@ -63,7 +54,6 @@ public class ProductService {
         }
     }
 
-
     public Page<ProductResponseDto> getAll(
             int page,
             int size,
@@ -73,9 +63,6 @@ public class ProductService {
             BigDecimal minPrice,
             BigDecimal maxPrice
     ) {
-        log.info("Получение товаров: страница={}, размер={}, сортировка={}, направление={}, название={}, минимальная цена={}, максимальная цена={}",
-                page, size, sortBy, direction, name, minPrice, maxPrice);
-
         Sort sort = (direction != null && direction.equalsIgnoreCase("desc"))
                 ? Sort.by(sortBy).descending()
                 : Sort.by(sortBy).ascending();
@@ -96,29 +83,18 @@ public class ProductService {
             spec = spec.and(ProductSpecification.priceLessThanOrEqualTo(maxPrice));
         }
 
-        Page<ProductResponseDto> result = repository.findAll(spec, pageable)
+        return repository.findAll(spec, pageable)
                 .map(mapper::toResponseDto);
-
-        log.info("Найдено {} товаров на странице {}", result.getNumberOfElements(), page);
-        return result;
     }
 
     public ProductResponseDto getById(Long id) {
-        log.info("Получение товара по id={}", id);
-
         Product product = repository.findById(id)
                 .orElseThrow(() -> new ProductIdException(id));
-
-        log.info("Товар найден, id={}, название={}, цена={}",
-                product.getId(), product.getName(), product.getPrice());
 
         return mapper.toResponseDto(product);
     }
 
     public ProductResponseDto update(Long id, ProductRequestDto productRequestDto) {
-        log.info("Обновление товара с id={}, новое название={}, новая цена={}",
-                id, productRequestDto.getName(), productRequestDto.getPrice());
-
         validateProduct(productRequestDto);
 
         Product product = repository.findById(id)
@@ -131,25 +107,16 @@ public class ProductService {
             throw new ProductNameException(productRequestDto.getName());
         }
 
-        log.info("Старое название товара={}, старая цена={}",
-                product.getName(), product.getPrice());
-
         product.setName(productRequestDto.getName());
         product.setDescription(productRequestDto.getDescription());
         product.setPrice(productRequestDto.getPrice());
 
         Product updatedProduct = repository.save(product);
 
-        log.info("Товар успешно обновлён, id={}, название={}, цена={}",
-                updatedProduct.getId(), updatedProduct.getName(), updatedProduct.getPrice());
-
         return mapper.toResponseDto(updatedProduct);
     }
 
-
     public void delete(Long id) {
-        log.info("Удаление товара с id={}", id);
-
         Product product = repository.findById(id)
                 .orElseThrow(() -> new ProductIdException(id));
 
@@ -159,7 +126,5 @@ public class ProductService {
         }
 
         repository.delete(product);
-
-        log.info("Товар успешно удалён, id={}", id);
     }
 }

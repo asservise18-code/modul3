@@ -11,8 +11,7 @@ import com.example.modul3.repository.ClientRepository;
 import com.example.modul3.repository.OrderRepository;
 import com.example.modul3.specification.ClientSpecification;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,12 +20,10 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ClientService {
-
-    private static final Logger log = LoggerFactory.getLogger(ClientService.class);
 
     private final ClientRepository repository;
     private final ClientMapper mapper;
@@ -34,14 +31,11 @@ public class ClientService {
 
     @Transactional
     public ClientResponseDto create(ClientRequestDto dto) {
-        log.info("Создание клиента с email={}", dto.getEmail());
-
         validateCreateRequest(dto);
 
         Client client = mapper.toEntity(dto);
         Client saved = repository.save(client);
 
-        log.info("Клиент успешно создан, id={}, email={}", saved.getId(), saved.getEmail());
         return mapper.toListDto(saved);
     }
 
@@ -53,8 +47,6 @@ public class ClientService {
     }
 
     public ClientResponseDto update(Long id, ClientRequestDto dto) {
-        log.info("Обновление клиента с id={}", id);
-
         Client existingClient = repository.findById(id)
                 .orElseThrow(() -> new ClientIdException(id));
 
@@ -67,7 +59,6 @@ public class ClientService {
 
         Client updated = repository.save(existingClient);
 
-        log.info("Клиент успешно обновлён, id={}, email={}", updated.getId(), updated.getEmail());
         return mapper.toListDto(updated);
     }
 
@@ -83,8 +74,6 @@ public class ClientService {
 
     @Transactional
     public void delete(Long id) {
-        log.info("Удаление клиента с id={}", id);
-
         Client client = repository.findById(id)
                 .orElseThrow(() -> new ClientIdException(id));
 
@@ -94,18 +83,13 @@ public class ClientService {
         }
 
         repository.delete(client);
-
-        log.info("Клиент успешно удалён, id={}", id);
     }
 
     @Transactional(readOnly = true)
     public ClientResponseDto getById(Long id) {
-        log.info("Получение клиента по id={}", id);
-
         Client client = repository.findById(id)
                 .orElseThrow(() -> new ClientIdException(id));
 
-        log.info("Клиент найден, id={}, email={}", client.getId(), client.getEmail());
         return mapper.toDto(client);
     }
 
@@ -119,9 +103,6 @@ public class ClientService {
             String email,
             String phone
     ) {
-        log.info("Получение клиентов: страница={}, размер={}, направление={}, имя={}, фамилия={}, email={}, телефон={}",
-                page, size, direction, firstName, lastName, email, phone);
-
         Sort sort = (direction != null && direction.equalsIgnoreCase("desc")) ?
                 Sort.by("firstName").descending() :
                 Sort.by("firstName").ascending();
@@ -146,10 +127,7 @@ public class ClientService {
             spec = spec.and(ClientSpecification.phoneContains(phone));
         }
 
-        Page<ClientResponseDto> result = repository.findAll(spec, pageable)
+        return repository.findAll(spec, pageable)
                 .map(mapper::toListDto);
-
-        log.info("Найдено {} клиентов на странице {}", result.getNumberOfElements(), page);
-        return result;
     }
 }
